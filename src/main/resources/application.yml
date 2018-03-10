@@ -1,0 +1,25 @@
+server:
+  port: 8181
+
+#enable hot swapping
+spring:
+  datasoruce:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/fsc?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: fsc0301@
+
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+
+mybatis:
+  type-aliases-package: com.fsc.domain.bo
+  mapper-locations: classpath:mapper/*.xml
+
+
+
+
+
+
