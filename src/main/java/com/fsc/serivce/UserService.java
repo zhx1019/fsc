@@ -1,6 +1,6 @@
 package com.fsc.serivce;
 
-import com.fsc.dao.UserDao;
+import com.fsc.dao.mapper.UserMapper;
 import com.fsc.domain.bo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,9 +13,9 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
   @Autowired
-  private UserDao userDao;
+  private UserMapper userMapper;
 
   public User getUserByUsernameAndCompanyId(String username, String companyId) {
-    return userDao.getUserByUsernameAndCompanyId(username, companyId);
+    return userMapper.getUserByUsernameAndCompanyId(username, companyId);
   }
 }

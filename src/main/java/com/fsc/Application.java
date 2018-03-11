@@ -9,7 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 
 @SpringBootApplication
-@MapperScan("com.fsc.dao")
+@MapperScan("com.fsc.dao.mapper")
+//@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 public class Application {
 
   public static void main(String[] args) {
