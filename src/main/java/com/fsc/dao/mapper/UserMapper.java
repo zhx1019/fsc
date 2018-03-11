@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 @Mapper
 public interface UserMapper {
@@ -31,5 +32,6 @@ public interface UserMapper {
 
     int updateByPrimaryKey(User record);
 
+    @Select("SELECT * FROM users WHERE USER_NAME = #{username} AND COMPANY_ID = #{companyId}")
     User getUserByUsernameAndCompanyId(@Param("username") String username, @Param("companyId") String companyId);
 }

@@ -3,7 +3,7 @@ server:
 
 #enable hot swapping
 spring:
-  datasoruce:
+  datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/fsc?useUnicode=true&characterEncoding=utf-8
     username: root
@@ -16,7 +16,7 @@ spring:
 
 mybatis:
   type-aliases-package: com.fsc.domain.bo
-  mapper-locations: classpath:mapper/*.xml
+#  mapper-locations: classpath:mapper/*.xml
 
 
 

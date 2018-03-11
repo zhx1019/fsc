@@ -3,5 +3,8 @@
 /*/build/*
 
 
-#output file
+#output files
 /out/*
+
+#gradle files
+/.gradle/*

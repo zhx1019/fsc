@@ -31,8 +31,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     "/js/**",
                     "/css/**",
                     "/webjars/**").permitAll().
-        antMatchers("/user/**").hasAnyRole("ROLE_USER", "ROLE_ADMIN").
-        antMatchers("/admin").hasRole("ROLE_ADMIN").
+        antMatchers("/user/**").hasAnyRole("USER", "ADMIN").
+        antMatchers("/admin").hasRole("ADMIN").
         anyRequest().authenticated().
         and().addFilterBefore(authenticationFilter(), UsernamePasswordAuthenticationFilter.class).
         formLogin().loginPage("/login").permitAll().
