@@ -42,7 +42,7 @@ public class FSCUserDetailsService implements UserDetailsService{
       throw new UsernameNotFoundException("Your are not allowed to access to this resource");
     }
 
-    User userdetails = new User(user.getUserName(), user.getUserName(), null);
+    User userdetails = new User(user.getUserName(), user.getPassword(), null);
     return userdetails;
   }
 }

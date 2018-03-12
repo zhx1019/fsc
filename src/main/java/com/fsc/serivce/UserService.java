@@ -16,6 +16,8 @@ public class UserService {
   private UserMapper userMapper;
 
   public User getUserByUsernameAndCompanyId(String username, String companyId) {
-    return userMapper.getUserByUsernameAndCompanyId(username, companyId);
+    User user = userMapper.getUserByUsernameAndCompanyId(username, companyId);
+    user.getCompanyId();
+    return user;
   }
 }

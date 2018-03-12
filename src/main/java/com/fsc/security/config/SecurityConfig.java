@@ -43,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   }
 
   @Autowired
-  protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+  protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
     BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
     auth.userDetailsService(fscUserDetailsService).passwordEncoder(passwordEncoder);
   }
