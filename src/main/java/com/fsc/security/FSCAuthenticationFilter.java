@@ -1,6 +1,8 @@
 package com.fsc.security;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,10 +12,12 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class FSCAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
+  private static final Logger log = LoggerFactory.getLogger(FSCAuthenticationFilter.class);
 
   @Override
   protected String obtainUsername(HttpServletRequest request) {
 
-    return request.getParameter("name") + '@' + request.getParameter("companyId");
+    log.debug(request.getParameter("companyId"));
+    return request.getParameter("username") + '@' + request.getParameter("companyId");
   }
 }
