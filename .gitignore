@@ -8,3 +8,6 @@
 
 #gradle files
 /.gradle/*
+
+#idea files
+/.idea/*
