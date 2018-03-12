@@ -14,6 +14,7 @@ import org.springframework.context.annotation.ComponentScan;
 @MapperScan("com.fsc.dao.mapper")
 @SpringBootApplication
 @ComponentScan(basePackages = { "com.fsc"})
+@EnableAutoConfiguration
 public class Application {
 
   public static void main(String[] args) {

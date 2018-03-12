@@ -23,6 +23,9 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+  @Autowired
+  private FSCUserDetailsService fscUserDetailsService;
+
   @Override
   protected void configure(HttpSecurity httpSecurity) throws Exception {
     httpSecurity.
@@ -42,7 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   @Autowired
   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
     BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-    auth.userDetailsService(new FSCUserDetailsService()).passwordEncoder(passwordEncoder);
+    auth.userDetailsService(fscUserDetailsService).passwordEncoder(passwordEncoder);
   }
 
   @Bean

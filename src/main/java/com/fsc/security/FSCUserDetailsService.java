@@ -10,20 +10,19 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Repository;
-
+import org.springframework.stereotype.Service;
 
 
 /**
  * Created by I321169 on 3/6/18.
  */
-@Repository
+@Service
 public class FSCUserDetailsService implements UserDetailsService{
   private static final Logger log = LoggerFactory.getLogger(FSCUserDetailsService.class);
 
   @Autowired
   private UserService userService;
-  
+
   @Override
   public UserDetails loadUserByUsername(String input) throws UsernameNotFoundException {
 
