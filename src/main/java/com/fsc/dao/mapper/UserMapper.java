@@ -1,37 +1,22 @@
 package com.fsc.dao.mapper;
 
 import com.fsc.domain.bo.User;
-import com.fsc.domain.bo.UserExample;
-import java.util.List;
-
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 @Mapper
 public interface UserMapper {
-    long countByExample(UserExample example);
-
-    int deleteByExample(UserExample example);
-
-    int deleteByPrimaryKey(Integer userId);
-
-    int insert(User record);
-
-    int insertSelective(User record);
-
-    List<User> selectByExample(UserExample example);
-
-    User selectByPrimaryKey(Integer userId);
-
-    int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
-
-    int updateByExample(@Param("record") User record, @Param("example") UserExample example);
-
-    int updateByPrimaryKeySelective(User record);
-
-    int updateByPrimaryKey(User record);
-
+    @Results({
+        @Result(property = "userId", column = "USER_ID"),
+        @Result(property = "companyId", column = "COMPANY_ID"),
+        @Result(property = "userName", column = "USER_NAME"),
+        @Result(property = "password", column = "PASSWORD"),
+        @Result(property = "firstName", column = "FIRST_NAME"),
+        @Result(property = "lastName", column = "LAST_NAME"),
+        @Result(property = "email", column = "EMAIL"),
+        @Result(property = "state", column = "STATE"),
+        @Result(property = "createdBy", column = "CREATED_BY"),
+        @Result(property = "createdTime", column = "CREATED_TIME")
+    })
     @Select("SELECT * FROM users WHERE USER_NAME = #{username} AND COMPANY_ID = #{companyId}")
     User getUserByUsernameAndCompanyId(@Param("username") String username, @Param("companyId") String companyId);
 }
