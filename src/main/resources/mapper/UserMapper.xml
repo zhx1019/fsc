@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.fsc.domain.bo.User">
     <id column="USER_ID" jdbcType="INTEGER" property="userId" />
     <result column="COMPANY_ID" jdbcType="VARCHAR" property="companyId" />
-    <result column="USER_NAME" jdbcType="VARCHAR" property="userName" />
+    <result column="USERNAME" jdbcType="VARCHAR" property="username" />
     <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
     <result column="FIRST_NAME" jdbcType="VARCHAR" property="firstName" />
     <result column="LAST_NAME" jdbcType="VARCHAR" property="lastName" />
@@ -12,6 +12,15 @@
     <result column="STATE" jdbcType="VARCHAR" property="state" />
     <result column="CREATED_BY" jdbcType="VARCHAR" property="createdBy" />
     <result column="CREATED_TIME" jdbcType="TIMESTAMP" property="createdTime" />
+  </resultMap>
+  <resultMap id="userMap" type="com.fsc.domain.bo.User">
+    <id column="USER_ID" jdbcType="INTEGER" property="userId" />
+    <result column="USERNAME" jdbcType="VARCHAR" property="username" />
+    <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
+    <result column="COMPANY_ID" jdbcType="VARCHAR" property="companyId" />
+    <collection property="roles" ofType="com.fsc.domain.bo.Role">
+      <result column="ROLE_TYPE" jdbcType="VARCHAR" property="roleType" />
+    </collection>
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -72,7 +81,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    USER_ID, COMPANY_ID, USER_NAME, PASSWORD, FIRST_NAME, LAST_NAME, EMAIL, STATE, CREATED_BY, 
+    USER_ID, COMPANY_ID, USERNAME, PASSWORD, FIRST_NAME, LAST_NAME, EMAIL, STATE, CREATED_BY, 
     CREATED_TIME
   </sql>
   <select id="selectByExample" parameterType="com.fsc.domain.bo.UserExample" resultMap="BaseResultMap">
@@ -107,11 +116,11 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.fsc.domain.bo.User">
-    insert into users (USER_ID, COMPANY_ID, USER_NAME, 
+    insert into users (USER_ID, COMPANY_ID, USERNAME, 
       PASSWORD, FIRST_NAME, LAST_NAME, 
       EMAIL, STATE, CREATED_BY, 
       CREATED_TIME)
-    values (#{userId,jdbcType=INTEGER}, #{companyId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR},
+    values (#{userId,jdbcType=INTEGER}, #{companyId,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
       #{password,jdbcType=VARCHAR}, #{firstName,jdbcType=VARCHAR}, #{lastName,jdbcType=VARCHAR}, 
       #{email,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, #{createdBy,jdbcType=VARCHAR}, 
       #{createdTime,jdbcType=TIMESTAMP})
@@ -125,8 +134,8 @@
       <if test="companyId != null">
         COMPANY_ID,
       </if>
-      <if test="userName != null">
-        USER_NAME,
+      <if test="username != null">
+        USERNAME,
       </if>
       <if test="password != null">
         PASSWORD,
@@ -157,8 +166,8 @@
       <if test="companyId != null">
         #{companyId,jdbcType=VARCHAR},
       </if>
-      <if test="userName != null">
-        #{userName,jdbcType=VARCHAR},
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
       </if>
       <if test="password != null">
         #{password,jdbcType=VARCHAR},
@@ -198,8 +207,8 @@
       <if test="record.companyId != null">
         COMPANY_ID = #{record.companyId,jdbcType=VARCHAR},
       </if>
-      <if test="record.userName != null">
-        USER_NAME = #{record.userName,jdbcType=VARCHAR},
+      <if test="record.username != null">
+        USERNAME = #{record.username,jdbcType=VARCHAR},
       </if>
       <if test="record.password != null">
         PASSWORD = #{record.password,jdbcType=VARCHAR},
@@ -231,7 +240,7 @@
     update users
     set USER_ID = #{record.userId,jdbcType=INTEGER},
       COMPANY_ID = #{record.companyId,jdbcType=VARCHAR},
-      USER_NAME = #{record.userName,jdbcType=VARCHAR},
+      USERNAME = #{record.username,jdbcType=VARCHAR},
       PASSWORD = #{record.password,jdbcType=VARCHAR},
       FIRST_NAME = #{record.firstName,jdbcType=VARCHAR},
       LAST_NAME = #{record.lastName,jdbcType=VARCHAR},
@@ -249,8 +258,8 @@
       <if test="companyId != null">
         COMPANY_ID = #{companyId,jdbcType=VARCHAR},
       </if>
-      <if test="userName != null">
-        USER_NAME = #{userName,jdbcType=VARCHAR},
+      <if test="username != null">
+        USERNAME = #{username,jdbcType=VARCHAR},
       </if>
       <if test="password != null">
         PASSWORD = #{password,jdbcType=VARCHAR},
@@ -279,7 +288,7 @@
   <update id="updateByPrimaryKey" parameterType="com.fsc.domain.bo.User">
     update users
     set COMPANY_ID = #{companyId,jdbcType=VARCHAR},
-      USER_NAME = #{userName,jdbcType=VARCHAR},
+      USERNAME = #{username,jdbcType=VARCHAR},
       PASSWORD = #{password,jdbcType=VARCHAR},
       FIRST_NAME = #{firstName,jdbcType=VARCHAR},
       LAST_NAME = #{lastName,jdbcType=VARCHAR},
@@ -290,10 +299,11 @@
     where USER_ID = #{userId,jdbcType=INTEGER}
   </update>
 
-  <select id="getUserByUsernameAndCompanyId" parameterType="map" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from users
-    where USER_NAME = #{username,jdbcType=VARCHAR} AND COMPANY_ID = #{companyId, jdbcType=VARCHAR}
+  <select id="getUserByUsernameAndCompanyId" parameterType="map" resultMap="userMap">
+    select u.USER_ID, u.USERNAME, u.PASSWORD, u.COMPANY_ID, r.ROLE_TYPE
+    from users u
+    left join users_role_rel urr on u.USER_ID = urr.USER_ID
+    left join role r on urr.ROLE_ID = r.ROLE_ID
+    where u.USERNAME = #{username,jdbcType=VARCHAR} AND u.COMPANY_ID = #{companyId, jdbcType=VARCHAR}
   </select>
 </mapper>

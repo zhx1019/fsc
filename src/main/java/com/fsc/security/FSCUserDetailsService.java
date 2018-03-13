@@ -1,16 +1,21 @@
 package com.fsc.security;
 
-import com.fsc.dao.mapper.UserMapper;
+
+import com.fsc.domain.bo.Role;
 import com.fsc.serivce.UserService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -42,7 +47,11 @@ public class FSCUserDetailsService implements UserDetailsService{
       throw new UsernameNotFoundException("Your are not allowed to access to this resource");
     }
 
-    User userdetails = new User(user.getUserName(), user.getPassword(), null);
+    List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+    for(Role role : user.getRoles()) {
+      authorities.add(new SimpleGrantedAuthority(role.getRoleType()));
+    }
+    User userdetails = new User(user.getUserName(), user.getPassword(), authorities);
     return userdetails;
   }
 }
