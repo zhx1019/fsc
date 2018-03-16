@@ -38,14 +38,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         antMatchers("/admin").hasRole("ADMIN").
         anyRequest().authenticated().
         and().addFilterBefore(authenticationFilter(), UsernamePasswordAuthenticationFilter.class).
-        formLogin().loginPage("/login").permitAll().
-        and().logout();
+        formLogin().loginPage("/login").defaultSuccessUrl("/index").
+        permitAll().and().logout().permitAll();
   }
 
   @Autowired
   protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
     BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
     auth.userDetailsService(fscUserDetailsService).passwordEncoder(passwordEncoder);
+
   }
 
   @Bean

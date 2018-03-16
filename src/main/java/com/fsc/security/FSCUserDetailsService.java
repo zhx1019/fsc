@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -30,6 +31,11 @@ public class FSCUserDetailsService implements UserDetailsService{
 
   @Override
   public UserDetails loadUserByUsername(String input) throws UsernameNotFoundException {
+
+    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    log.info(passwordEncoder.encode("jack123"));
+    log.info(passwordEncoder.encode("admin123"));
+    log.info(passwordEncoder.encode("dba123"));
 
     String[] split = input.split("@");
     if(split.length < 2) {
