@@ -34,11 +34,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     "/js/**",
                     "/css/**",
                     "/webjars/**").permitAll().
-        antMatchers("/user/**").hasAnyRole("USER", "ADMIN").
-        antMatchers("/admin").hasRole("ADMIN").
+        antMatchers("/asset/**", "/customer/**", "/order/**", "/test").hasAnyRole("USER", "ADMIN").
+        antMatchers("/settings/**").hasRole("ADMIN").
         anyRequest().authenticated().
         and().addFilterBefore(authenticationFilter(), UsernamePasswordAuthenticationFilter.class).
-        formLogin().loginPage("/login").defaultSuccessUrl("/index").
+        formLogin().loginPage("/login").failureUrl("/login-error").defaultSuccessUrl("/index").
         permitAll().and().logout().permitAll();
   }
 

@@ -32,7 +32,7 @@ public class FSCAuthenticationFilter extends UsernamePasswordAuthenticationFilte
   @Override
   protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response,
                                           FilterChain chain, Authentication authResult) throws IOException, ServletException {
-    setAuthenticationSuccessHandler(new SimpleUrlAuthenticationSuccessHandler("/index.html"));
+    setAuthenticationSuccessHandler(new SimpleUrlAuthenticationSuccessHandler("/index"));
     super.successfulAuthentication(request, response, chain, authResult);
   }
 
@@ -40,7 +40,7 @@ public class FSCAuthenticationFilter extends UsernamePasswordAuthenticationFilte
   protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response,
                                             AuthenticationException failed) throws IOException, ServletException {
 
-    setAuthenticationFailureHandler(new SimpleUrlAuthenticationFailureHandler("/registration.html"));
+    setAuthenticationFailureHandler(new SimpleUrlAuthenticationFailureHandler("/login-error"));
     super.unsuccessfulAuthentication(request, response, failed);
   }
 }
