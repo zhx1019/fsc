@@ -14,7 +14,7 @@ public class SettingsController {
 
   @RequestMapping(value = "/index", method = RequestMethod.GET)
   public String index(){
-    return "index";
+    return "settings/index";
   }
 
 }
