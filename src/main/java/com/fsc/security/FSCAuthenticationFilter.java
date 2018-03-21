@@ -26,6 +26,7 @@ public class FSCAuthenticationFilter extends UsernamePasswordAuthenticationFilte
   protected String obtainUsername(HttpServletRequest request) {
 
     log.debug(request.getParameter("companyId"));
+    request.getSession().setAttribute("companyId", request.getParameter("companyId"));
     return request.getParameter("username") + '@' + request.getParameter("companyId");
   }
 
