@@ -33,9 +33,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         antMatchers("/",
                     "/js/**",
                     "/css/**",
-                    "/webjars/**").permitAll().
-        antMatchers("/asset/**", "/customer/**", "/order/**", "/test").hasAnyRole("USER", "ADMIN").
-        antMatchers("/settings/**").hasRole("ADMIN").
+                    "/webjars/**",
+            "/asset/**",
+            "/customer/**",
+            "/order/**").permitAll().
+        //temporarily comment for developement
+//        antMatchers("/asset/**", "/customer/**", "/order/**", "/test").hasAnyRole("USER", "ADMIN").
+//        antMatchers("/settings/**").hasRole("ADMIN").
         anyRequest().authenticated().
         and().addFilterBefore(authenticationFilter(), UsernamePasswordAuthenticationFilter.class).
         formLogin().loginPage("/login").failureUrl("/login-error").defaultSuccessUrl("/index").

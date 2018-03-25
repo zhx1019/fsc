@@ -1,4 +1,4 @@
-package com.fsc.controller;
+package com.fsc.controller.order;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
