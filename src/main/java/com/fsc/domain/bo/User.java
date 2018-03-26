@@ -1,13 +1,14 @@
 package com.fsc.domain.bo;
 
 import java.util.Date;
+import java.util.List;
 
 public class User {
     private Integer userId;
 
     private String companyId;
 
-    private String userName;
+    private String username;
 
     private String password;
 
@@ -22,6 +23,8 @@ public class User {
     private String createdBy;
 
     private Date createdTime;
+
+    private List<Role> roles;
 
     public Integer getUserId() {
         return userId;
@@ -40,11 +43,11 @@ public class User {
     }
 
     public String getUserName() {
-        return userName;
+        return username;
     }
 
     public void setUserName(String userName) {
-        this.userName = userName == null ? null : userName.trim();
+        this.username = userName == null ? null : userName.trim();
     }
 
     public String getPassword() {
@@ -101,5 +104,13 @@ public class User {
 
     public void setCreatedTime(Date createdTime) {
         this.createdTime = createdTime;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 }
