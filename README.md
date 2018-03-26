@@ -52,3 +52,7 @@ INSERT INTO `users_role_rel` VALUES ('1', '1');
 INSERT INTO `users_role_rel` VALUES ('3', '2');
 INSERT INTO `users_role_rel` VALUES ('2', '3');
 INSERT INTO `users_role_rel` VALUES ('3', '3');
+
+
+
+//add check 
