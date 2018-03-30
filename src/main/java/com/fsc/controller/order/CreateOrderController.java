@@ -30,8 +30,6 @@ public class CreateOrderController {
 
   @RequestMapping(value = "createOrder", method = RequestMethod.POST)
   public String createOrder() {
-
-
     return "redirect:order/orders";
   }
 }

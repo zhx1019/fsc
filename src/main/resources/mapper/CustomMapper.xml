@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fsc.dao.mapper.CustomMapper">
+  <resultMap id="BaseResultMap" type="com.fsc.domain.bo.Custom">
+    <id column="CUS_ID" jdbcType="INTEGER" property="cusId" />
+    <result column="CUS_SHORTNAME" jdbcType="VARCHAR" property="cusShortname" />
+    <result column="CUS_NAME" jdbcType="VARCHAR" property="cusName" />
+    <result column="CUS_TYPE" jdbcType="VARCHAR" property="cusType" />
+    <result column="CUS_CONTACT" jdbcType="VARCHAR" property="cusContact" />
+    <result column="CUS_CREATTIME" jdbcType="VARCHAR" property="cusCreattime" />
+    <result column="CUS_PRICE" jdbcType="DECIMAL" property="cusPrice" />
+    <result column="CUS_SIGN" jdbcType="VARCHAR" property="cusSign" />
+    <result column="CUS_SERVICE" jdbcType="VARCHAR" property="cusService" />
+    <result column="CUS_CREATMAN" jdbcType="VARCHAR" property="cusCreatman" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    CUS_ID, CUS_SHORTNAME, CUS_NAME, CUS_TYPE, CUS_CONTACT, CUS_CREATTIME, CUS_PRICE, 
+    CUS_SIGN, CUS_SERVICE, CUS_CREATMAN
+  </sql>
+  <select id="selectByExample" parameterType="com.fsc.domain.bo.CustomExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from custom
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from custom
+    where CUS_ID = #{cusId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from custom
+    where CUS_ID = #{cusId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.fsc.domain.bo.CustomExample">
+    delete from custom
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.fsc.domain.bo.Custom">
+    insert into custom (CUS_ID, CUS_SHORTNAME, CUS_NAME, 
+      CUS_TYPE, CUS_CONTACT, CUS_CREATTIME, 
+      CUS_PRICE, CUS_SIGN, CUS_SERVICE, 
+      CUS_CREATMAN)
+    values (#{cusId,jdbcType=INTEGER}, #{cusShortname,jdbcType=VARCHAR}, #{cusName,jdbcType=VARCHAR}, 
+      #{cusType,jdbcType=VARCHAR}, #{cusContact,jdbcType=VARCHAR}, #{cusCreattime,jdbcType=VARCHAR}, 
+      #{cusPrice,jdbcType=DECIMAL}, #{cusSign,jdbcType=VARCHAR}, #{cusService,jdbcType=VARCHAR}, 
+      #{cusCreatman,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fsc.domain.bo.Custom">
+    insert into custom
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cusId != null">
+        CUS_ID,
+      </if>
+      <if test="cusShortname != null">
+        CUS_SHORTNAME,
+      </if>
+      <if test="cusName != null">
+        CUS_NAME,
+      </if>
+      <if test="cusType != null">
+        CUS_TYPE,
+      </if>
+      <if test="cusContact != null">
+        CUS_CONTACT,
+      </if>
+      <if test="cusCreattime != null">
+        CUS_CREATTIME,
+      </if>
+      <if test="cusPrice != null">
+        CUS_PRICE,
+      </if>
+      <if test="cusSign != null">
+        CUS_SIGN,
+      </if>
+      <if test="cusService != null">
+        CUS_SERVICE,
+      </if>
+      <if test="cusCreatman != null">
+        CUS_CREATMAN,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cusId != null">
+        #{cusId,jdbcType=INTEGER},
+      </if>
+      <if test="cusShortname != null">
+        #{cusShortname,jdbcType=VARCHAR},
+      </if>
+      <if test="cusName != null">
+        #{cusName,jdbcType=VARCHAR},
+      </if>
+      <if test="cusType != null">
+        #{cusType,jdbcType=VARCHAR},
+      </if>
+      <if test="cusContact != null">
+        #{cusContact,jdbcType=VARCHAR},
+      </if>
+      <if test="cusCreattime != null">
+        #{cusCreattime,jdbcType=VARCHAR},
+      </if>
+      <if test="cusPrice != null">
+        #{cusPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="cusSign != null">
+        #{cusSign,jdbcType=VARCHAR},
+      </if>
+      <if test="cusService != null">
+        #{cusService,jdbcType=VARCHAR},
+      </if>
+      <if test="cusCreatman != null">
+        #{cusCreatman,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.fsc.domain.bo.CustomExample" resultType="java.lang.Long">
+    select count(*) from custom
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update custom
+    <set>
+      <if test="record.cusId != null">
+        CUS_ID = #{record.cusId,jdbcType=INTEGER},
+      </if>
+      <if test="record.cusShortname != null">
+        CUS_SHORTNAME = #{record.cusShortname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cusName != null">
+        CUS_NAME = #{record.cusName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cusType != null">
+        CUS_TYPE = #{record.cusType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cusContact != null">
+        CUS_CONTACT = #{record.cusContact,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cusCreattime != null">
+        CUS_CREATTIME = #{record.cusCreattime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cusPrice != null">
+        CUS_PRICE = #{record.cusPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cusSign != null">
+        CUS_SIGN = #{record.cusSign,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cusService != null">
+        CUS_SERVICE = #{record.cusService,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cusCreatman != null">
+        CUS_CREATMAN = #{record.cusCreatman,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update custom
+    set CUS_ID = #{record.cusId,jdbcType=INTEGER},
+      CUS_SHORTNAME = #{record.cusShortname,jdbcType=VARCHAR},
+      CUS_NAME = #{record.cusName,jdbcType=VARCHAR},
+      CUS_TYPE = #{record.cusType,jdbcType=VARCHAR},
+      CUS_CONTACT = #{record.cusContact,jdbcType=VARCHAR},
+      CUS_CREATTIME = #{record.cusCreattime,jdbcType=VARCHAR},
+      CUS_PRICE = #{record.cusPrice,jdbcType=DECIMAL},
+      CUS_SIGN = #{record.cusSign,jdbcType=VARCHAR},
+      CUS_SERVICE = #{record.cusService,jdbcType=VARCHAR},
+      CUS_CREATMAN = #{record.cusCreatman,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fsc.domain.bo.Custom">
+    update custom
+    <set>
+      <if test="cusShortname != null">
+        CUS_SHORTNAME = #{cusShortname,jdbcType=VARCHAR},
+      </if>
+      <if test="cusName != null">
+        CUS_NAME = #{cusName,jdbcType=VARCHAR},
+      </if>
+      <if test="cusType != null">
+        CUS_TYPE = #{cusType,jdbcType=VARCHAR},
+      </if>
+      <if test="cusContact != null">
+        CUS_CONTACT = #{cusContact,jdbcType=VARCHAR},
+      </if>
+      <if test="cusCreattime != null">
+        CUS_CREATTIME = #{cusCreattime,jdbcType=VARCHAR},
+      </if>
+      <if test="cusPrice != null">
+        CUS_PRICE = #{cusPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="cusSign != null">
+        CUS_SIGN = #{cusSign,jdbcType=VARCHAR},
+      </if>
+      <if test="cusService != null">
+        CUS_SERVICE = #{cusService,jdbcType=VARCHAR},
+      </if>
+      <if test="cusCreatman != null">
+        CUS_CREATMAN = #{cusCreatman,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CUS_ID = #{cusId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fsc.domain.bo.Custom">
+    update custom
+    set CUS_SHORTNAME = #{cusShortname,jdbcType=VARCHAR},
+      CUS_NAME = #{cusName,jdbcType=VARCHAR},
+      CUS_TYPE = #{cusType,jdbcType=VARCHAR},
+      CUS_CONTACT = #{cusContact,jdbcType=VARCHAR},
+      CUS_CREATTIME = #{cusCreattime,jdbcType=VARCHAR},
+      CUS_PRICE = #{cusPrice,jdbcType=DECIMAL},
+      CUS_SIGN = #{cusSign,jdbcType=VARCHAR},
+      CUS_SERVICE = #{cusService,jdbcType=VARCHAR},
+      CUS_CREATMAN = #{cusCreatman,jdbcType=VARCHAR}
+    where CUS_ID = #{cusId,jdbcType=INTEGER}
+  </update>
+</mapper>
