@@ -1,0 +1,245 @@
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{margin:0; padding:0;}
+body,button,input,select,textarea{font:12px/20px "Microsoft yahei",sans-serif,arial;}
+body{
+	 -moz-user-select: none; /*ç«ç‹*/
+	-webkit-user-select: none; /*webkitæµè§ˆå™¨*/
+	-ms-user-select: none; /*IE10*/
+	-khtml-user-select: none; /*æ—©æœŸæµè§ˆå™¨*/
+	user-select: none;
+}
+
+html,body{
+    height: 100%;
+}
+
+h1,h2,h3,h4,h5,h6{font-size:100%; font-weight:normal;}
+ul,ol{list-style:none}
+input,select,textarea,button{outline:none;}
+a{text-decoration:none}
+a:hover{text-decoration:none;}
+img{border:0; display:block;}
+.clearfix{display:block; *display:inline-table;}
+.clearfix:after{display:block; content:""; clear:both; height:0; visibility:hidden;}
+
+.ico{display:inline-block; background:url(../../images/icon.png) no-repeat;}
+.ico_task{width:24px; height:24px; background-position:0 0;}
+.ico_customer{width:24px; height:24px; background-position:0 -30px;}
+.ico_resource{width:24px; height:24px; background-position:0 -60px;}
+.ico_order{width:24px; height:24px; background-position:0 -90px;}
+.ico_check{width:24px; height:24px; background-position:0 -120px;}
+.ico_form{width:24px; height:24px; background-position:0 -150px;}
+.ico_set{width:24px; height:24px; background-position:0 -180px;}
+.ico_center{width:24px; height:24px; background-position:0 -210px;}
+
+.on .ico_task{background-position:-30px 0;}
+.on .ico_customer{background-position:-30px -30px;}
+.on .ico_resource{background-position:-30px -60px;}
+.on .ico_order{background-position:-30px -90px;}
+.on .ico_check{background-position:-30px -120px;}
+.on .ico_form{background-position:-30px -150px;}
+.on .ico_set{background-position:-30px -180px;}
+.on .ico_center{background-position:-30px -210px;}
+
+.ico_close{width:24px; height:24px; background-position:0 -240px;}
+.ico_close:hover{width:24px; height:24px; background-position:-30px -240px;}
+.ico_off{width:11px; height:30px; background-position:-90px -240px;}
+.on .ico_off{background-position:-101px -240px;}
+
+.ico_add{width:30px; height:18px; background-position:-55px -1px; background-color:#48cfad; text-indent:-9999px;
+	border-radius:4px;
+}
+
+.ico_add:hover{background-color:#37bc9b;}
+.ico_add:active{background-color:#37bc9b; box-shadow:inset 0 2px 2px #2f9d81;}
+.ico_modify{width:20px; height:20px; background-position:-60px -20px;}
+.ico_delete{width:20px; height:20px; background-position:-60px -40px;}
+.ico_filter{width:20px; height:20px; background-position:-60px -60px;}
+.ico_care{width:20px; height:20px; background-position:-60px -80px;}
+.nopass .ico_care{background-position:-60px -100px;}
+.nostart .ico_care{background-position:-60px -120px;}
+.ico_turn{width:20px; height:20px; background-position:-60px -140px;}
+.on .ico_turn{width:20px; height:20px; background-position:-60px -160px;}
+.ico_badd{width:20px; height:20px; background-position:-60px -180px;}
+.ico_bsearch{width:20px; height:20px; background-position:-60px -200px;}
+
+.ico_driver{width:30px; height:30px; background-position:-90px 0;}
+.ico_car{width:40px; height:30px; background-position:-90px -30px;}
+.ico_comp{width:30px; height:30px; background-position:-90px -60px;}
+.ico_chat{width:30px; height:30px; background-position:-90px -90px;}
+
+.btn{text-align:center;}
+.btn_add{display:inline-block; width:217px; height:32px; line-height:32px; background:#ed5565;
+    border:0; font-size:12px; font-weight:bold; color:#fff; text-align:center;
+	border-radius:4px;
+}
+.btn_add:hover{background:#d44352;}
+.btn_add:active{box-shadow:inset 0 4px 2px 0 #bc3a47;}
+
+.btn_sort{width:118px; }
+.btn_add .ico_badd{vertical-align:top; margin:5px 7px 0 0;}
+
+a.btn_ctype{
+	display: inline-block;
+	color:#96a9b3;width:auto;height:39px;
+	line-height:39px;margin: .5em;
+}
+
+.btn_green_m .ico_bsearch{vertical-align:top; margin:6px 7px 0 0;}
+
+.btn_green,
+.btn_green_m,
+.btn_green_s{display:inline-block; width:255px; height:39px;line-height:39px; background:#48cfad; border:0; font-size:14px; font-weight:bold; color:#fff; cursor:pointer;
+	border-radius:4px;
+	box-shadow:0 3px 0 0 #37bc9b;
+}
+.btn_green_m{width:145px; height:33px; line-height:33px; box-shadow:none; font-weight:normal; font-size:12px;}
+.btn_green_s{width:67px; min-width:67px; height:28px; line-height:28px; box-shadow:none; font-size:12px;}
+
+.btn_green:hover{background:#37bc9b; box-shadow:0 3px 0 0 #31a084;}
+.btn_green_m:hover{background:#37bc9b;}
+.btn_green_s:hover{background:#37bc9b;}
+
+.btn_green:active{height:42px; background:#37bc9b; box-shadow:inset 0 3px 2px 0 #31a487;}
+.btn_green_m:active{background:#37bc9b; box-shadow:inset 0 4px 2px 0 #31a487;}
+.btn_green_s:active{background:#37bc9b;  box-shadow:inset 0 4px 2px 0 #31a487;}
+
+.btn_red_s{
+    background:#ed5565;
+    display:inline-block; min-width: 67px; height:28px;line-height:28px;border:0; font-size:12px; color:#fff; cursor:pointer;
+    border-radius:4px;
+}
+.btn_red_s:hover{background:#d44352;}
+.btn_red_s:active{background:#d44352;  box-shadow:inset 0 4px 2px 0 #bc3a47;}
+
+.btn_blue,
+.btn_blue_m,
+.btn_blue_s{display:inline-block; width:255px; height:39px; background:#4fc1e9; border:0; font-size:14px; font-weight:bold; color:#fff; cursor:pointer;
+	border-radius:4px;
+	box-shadow:0 3px 0 0 #3bafda;
+}
+.btn_blue_m{width:145px; height:33px; line-height:33px; box-shadow:none;}
+.btn_blue_s{width:67px; height:28px; line-height:28px; font-size:12px; box-shadow:none;}
+.btn_blue:hover{ background:#3bafda; box-shadow:0 3px 0 0 #3199c0;}
+.btn_blue:active{ height:42px; background:#3bafda; box-shadow:inset 0 3px 2px 0 #2e95bc;}
+.btn_blue_m:hover{ background:#3bafda; box-shadow:none;}
+.btn_blue_m:active{ background:#3bafda; box-shadow:none;}
+.btn_blue_s:hover{ background:#3bafda;}
+.btn_blue_s:active{ background:#3bafda;}
+
+.btn_gray,
+.btn_gray_m,
+.btn_gray_s{display:inline-block; width:255px; height:39px; background:#b8b7c3; border:0; font-size:14px; font-weight:bold; color:#fff; cursor:pointer;
+	border-radius:4px;
+	box-shadow:0 3px 0 0 #9a98ac;
+}
+.btn_gray_m{width:145px; height:33px; line-height:33px; box-shadow:none;}
+.btn_gray_s{width:67px; height:28px; line-height:28px; box-shadow:none;  font-size:12px;}
+.btn_gray:hover{ background:#9a98ac; box-shadow:0 3px 0 0 #878598;}
+.btn_gray_m:hover,
+.btn_gray_s:hover{ background:#9a98ac; box-shadow:0 3px 0 0 #878598;}
+.btn_gray_m:hover,
+.btn_gray_s:hover{box-shadow:none;}
+.btn_gray:active,.btn_gray_m:active{ background:#9a98ac; box-shadow:0 3px 0 0 #9a98ac;}
+.btn_gray_m:active{box-shadow:none;}
+
+.btn_disabled,.btn_disabled:hover,.btn_disabled:active{display:inline-block; width:255px; height:39px; background:#e2e2e2; border:0; font-size:14px; font-weight:bold; color:#fff; cursor:pointer;
+	border-radius:4px;
+	box-shadow:0 3px 0 0 #d8d8d8;
+}
+.btn_disabled_s,.btn_disabled_s:hover,.btn_disabled_s:active{display:inline-block; background:#e2e2e2; border:0; font-weight:bold; color:#fff; cursor:pointer;
+	border-radius:4px;
+	box-shadow:none;
+}
+
+
+.btn_modify{display:inline-block; width:49px; height:21px; padding:6px 0; background:#4fc0e8;
+	border-radius:4px;
+}
+.btn_modify:hover{background:#3bafda;}
+.btn_modify:active{background:#3bafda; box-shadow:inset 0 3px 2px 0 #2e95bc;}
+.btn_delete{display:inline-block; width:49px; height:21px; padding:6px 0;  background:#fb6e51;
+	border-radius:4px;
+}
+.btn_delete:hover{background:#d44352;}
+.btn_delete:active{background:#d44352; box-shadow:inset 0 3px 2px 0 #b43744;}
+
+.filter .btn_green_s{width:45px; min-width:45px;}
+.filter .btn_gray_s{width:45px; min-width:45px;}
+
+.mod_containter{position:relative; height:900px; overflow:hidden;}
+.mod_side{position:relative; float:left; width:90px; height:100%; background:#32323a;}
+.mod_main{padding-left:90px; height:100%; background:#e9eaef;}
+.mod_load{overflow:auto;}
+
+.logo{width:90px;height: 52px;overflow: hidden;padding: 0;border-bottom:2px solid #1f1f27;}
+.logo a{display: block;width:3em;height:2.8em;margin:.5em auto;text-align: center;
+    color:#f5f5f5;font-size: 1.5em;line-height:2em;
+    letter-spacing:.3em;font-weight: bolder
+}
+
+
+.mod_list li{float:left; width:100%; height:58px; border-bottom:2px solid #1f1f27;}
+.mod_list li a{display:block; padding:17px 0 17px 16px; line-height:24px; color:#aab4bc;}
+.mod_list li a:hover{background:#53535c;}
+.mod_list li .ico{vertical-align:top; margin-right:10px;}
+.mod_list li.on{background:#269dd9;}
+.mod_list li.on a{color:#fff;}
+.mod_list li.set{position:absolute; left:0; bottom:60px; border:0; border-top:2px solid #1f1f27;}
+.mod_list li.user{position:absolute; left:0; bottom:0; border:0; border-top:2px solid #1f1f27;}
+.mod_list .menu{position:absolute; left:100px; bottom:0; width:130px; padding:10px 0; background:#434a54; z-index:9; display:none;
+	border-radius:4px;
+}
+.mod_list .menu i{position:absolute; left:-16px; bottom:18px; width:0; height:0; line-height:0; font-size:0; border-width:8px; border-style:dashed solid dashed dashed; border-color:transparent #434a54 transparent transparent;}
+.mod_list .menu a{margin-top:-1px; height:31px; line-height:31px; padding:0 0 0 20px; border-top:1px solid #313740; border-bottom:1px solid #313740;}
+.mod_list .menu a:hover{background:#269dd9; color:#fff;}
+
+.main .mode_head {
+	overflow: auto;
+	position: relative;
+    background: #269dd9;
+    color: #fff;
+}
+.main .mode_head .title{
+	float: left;
+    padding-left: 25px;
+    padding-top:20px;
+    height:33px;
+    font-size: 20px;
+}
+
+/* navigation bar */
+.mod_nav{
+    margin: 15px 15px 0;
+    padding: 0 10px;
+    border-bottom: 1px solid #269dd9;
+    overflow: hidden;
+}
+
+.mod_nav ul{
+    padding: 0 20px;
+    list-style-type: none;
+}
+
+.mod_nav ul li{
+    float:left;  width:auto; margin-right:4px;  text-align:center; font-weight:bold; cursor:pointer;
+}
+
+.mod_nav ul li a {
+	display:inline-block; width:125px; height:32px; line-height:32px; padding:5px 5px; background:#f0f1f3; color:#96a9b3;
+	border-top-left-radius:4px; border-top-right-radius:4px;
+}
+
+.mod_nav li a:hover{background:#dadde2;}
+.mod_nav li.on a{background:#269dd9; color:#fff;}
+
+.mod_nav button{
+	position: absolute;
+	top: 70px;
+    right: 20px;
+}
+
+
+
+
+
+
