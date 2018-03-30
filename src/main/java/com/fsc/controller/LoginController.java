@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.naming.Context;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.security.Principal;
@@ -28,6 +29,19 @@ public class LoginController {
     model.addAttribute("username", principal.getName());
     return "index";
   }
+
+  @GetMapping("/resource")
+  public String resource(){
+    return "resource/resourceList";
+  }
+
+  @GetMapping("/customlist")
+  public String customList(HttpServletRequest request, HttpServletResponse response){
+
+    response.setHeader("X-Frame-Options", "SAMEORIGIN");
+    return "custom/customList";
+  }
+
 
   @RequestMapping(value = "/login-error")
   public String loginError(Model model){
