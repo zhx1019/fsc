@@ -5,18 +5,31 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/fsc?useUnicode=true&characterEncoding=utf-8&useSSL=true
+    url: jdbc:mysql://121.43.172.110:3306/fsc?useUnicode=true&characterEncoding=utf-8&useSSL=true
     username: root
-    password: fsc0301@
+    password: Zhx1019@
 
   thymeleaf:
     cache: false
     prefix: classpath:/templates/
     suffix: .html
 
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    lettuce:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+    timeout: 10000
+
 mybatis:
   type-aliases-package: com.fsc.domain.bo
   mapper-locations: classpath:mapper/*.xml
+
+
 
 
 

@@ -6,9 +6,9 @@ import java.util.List;
 public class User {
     private Integer userId;
 
-    private String companyId;
-
     private String username;
+
+    private Integer companyId;
 
     private String password;
 
@@ -18,11 +18,15 @@ public class User {
 
     private String email;
 
-    private String state;
+    private Boolean isActive;
+
+    private Date createdTime;
 
     private String createdBy;
 
-    private Date createdTime;
+    private Date lastmodifiedTime;
+
+    private String lastmodifiedBy;
 
     private List<Role> roles;
 
@@ -34,20 +38,20 @@ public class User {
         this.userId = userId;
     }
 
-    public String getCompanyId() {
-        return companyId;
-    }
-
-    public void setCompanyId(String companyId) {
-        this.companyId = companyId == null ? null : companyId.trim();
-    }
-
-    public String getUserName() {
+    public String getUsername() {
         return username;
     }
 
-    public void setUserName(String userName) {
-        this.username = userName == null ? null : userName.trim();
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
+    }
+
+    public Integer getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(Integer companyId) {
+        this.companyId = companyId;
     }
 
     public String getPassword() {
@@ -82,12 +86,20 @@ public class User {
         this.email = email == null ? null : email.trim();
     }
 
-    public String getState() {
-        return state;
+    public Boolean getIsActive() {
+        return isActive;
     }
 
-    public void setState(String state) {
-        this.state = state == null ? null : state.trim();
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
+    }
+
+    public Date getCreatedTime() {
+        return createdTime;
+    }
+
+    public void setCreatedTime(Date createdTime) {
+        this.createdTime = createdTime;
     }
 
     public String getCreatedBy() {
@@ -98,12 +110,20 @@ public class User {
         this.createdBy = createdBy == null ? null : createdBy.trim();
     }
 
-    public Date getCreatedTime() {
-        return createdTime;
+    public Date getLastmodifiedTime() {
+        return lastmodifiedTime;
     }
 
-    public void setCreatedTime(Date createdTime) {
-        this.createdTime = createdTime;
+    public void setLastmodifiedTime(Date lastmodifiedTime) {
+        this.lastmodifiedTime = lastmodifiedTime;
+    }
+
+    public String getLastmodifiedBy() {
+        return lastmodifiedBy;
+    }
+
+    public void setLastmodifiedBy(String lastmodifiedBy) {
+        this.lastmodifiedBy = lastmodifiedBy == null ? null : lastmodifiedBy.trim();
     }
 
     public List<Role> getRoles() {
