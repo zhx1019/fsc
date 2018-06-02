@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>FSC</title>
+    <link rel="stylesheet" type="text/css" th:href="@{css/juche/main.css}"/>
+</head>
+<body>
+
+<div class="mod_containter">
+    <div class="mod_side">
+        <h1 class="logo"><a href="juche.html"></a></h1>
+        <div class="mod_list">
+            <ul>
+                <li data-tab="false" data-name="info_CustomerManger_query" style="display:none;"><a href="#task" data-seq="0"><i class="ico ico_task"></i>任务</a></li>
+                <li class="on" data-tab="false" data-name="info_CustomerManger_query"><a href="#custom" data-seq="1"><i class="ico ico_customer"></i>客户</a></li>
+                <li data-tab="true" data-name="info_CarManage_querySelfCar"><a href="#resorce" data-seq="2"><i class="ico ico_resource"></i>资源</a></li>
+                <li data-tab="true" data-name="order_OrderManage_queryOrder"><a href="#order" data-seq="3"><i class="ico ico_order"></i>订单</a></li>
+                <li data-tab="true"  data-name="system_ UserManage_queryUser"><a href="#setting" data-seq="6"><i class="ico ico_set"></i>设置</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="main">
+        <div class="mode_head">
+            <h2 class="title">订单管理</h2>
+        </div>
+        <div class="mod_nav">
+            <ul>
+                <li class="on"><a  href="#order-0">待处理订单</a></li>
+                <li><a href="#order-1">运行中</a></li>
+                <li><a href="#order-2">核对订单</a></li>
+                <li><a href="#">日程安排</a></li>
+            </ul>
+            <button>创建新订单</button>
+        </div>
+    </div>
+    <div id="mod_mask" class="mod_mask"></div>
+    <div class="mod_dialog"></div>
+    <div style="text-align: center;color:#768082;position: fixed;bottom: 0;right:25px;">Power by FSC</div>
+</div>
+</body>
+</html>

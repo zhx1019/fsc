@@ -57,7 +57,7 @@ public class FSCUserDetailsService implements UserDetailsService{
     for(Role role : user.getRoles()) {
       authorities.add(new SimpleGrantedAuthority(role.getRoleType()));
     }
-    User userdetails = new User(user.getUserName(), user.getPassword(), authorities);
+    User userdetails = new User(user.getUsername(), user.getPassword(), authorities);
     return userdetails;
   }
 }
