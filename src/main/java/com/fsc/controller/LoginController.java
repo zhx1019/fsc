@@ -19,38 +19,63 @@ import java.security.Principal;
 @Controller
 public class LoginController {
 
-  @RequestMapping(value={"/", "/login"}, method = RequestMethod.GET)
-  public String login(HttpServletRequest request, HttpServletResponse response){
-    return "login";
-  }
+    @RequestMapping(value = {"/", "/login"}, method = RequestMethod.GET)
+    public String login(HttpServletRequest request, HttpServletResponse response) {
+        return "login";
+    }
 
-  @GetMapping("/index")
-  public String user(@AuthenticationPrincipal Principal principal, Model model){
-    model.addAttribute("username", principal.getName());
-    return "index";
-  }
+    @GetMapping("/index")
+    public String user(@AuthenticationPrincipal Principal principal, Model model) {
+        model.addAttribute("username", principal.getName());
+        return "index";
+    }
 
-  @GetMapping("/resource")
-  public String resource(){
-    return "resource/resourceList";
-  }
+    @GetMapping("/resource")
+    public String resource() {
+        return "resource/resourceList";
+    }
 
-  @GetMapping("/customlist")
-  public String customList(HttpServletRequest request, HttpServletResponse response){
+    @GetMapping("/customlist")
+    public String customList(HttpServletRequest request, HttpServletResponse response) {
 
-    response.setHeader("X-Frame-Options", "SAMEORIGIN");
-    return "custom/customList";
-  }
+        response.setHeader("X-Frame-Options", "SAMEORIGIN");
+        return "custom/customList";
+    }
 
 
-  @RequestMapping(value = "/login-error")
-  public String loginError(Model model){
-    model.addAttribute("loginError", true);
-    return "login";
-  }
+    @RequestMapping(value = "/login-error")
+    public String loginError(Model model) {
+        model.addAttribute("loginError", true);
+        return "login";
+    }
 
-  @RequestMapping(value = "/test")
-  public String test(Model model){
-    return "test";
-  }
+    @RequestMapping(value = "/menu")
+    public String menu(HttpServletRequest request, HttpServletResponse response) {
+        response.setHeader("X-Frame-Options", "SAMEORIGIN");
+        return "menu";
+    }
+
+    @RequestMapping(value = "/resourcelist")
+    public String resourcelist(HttpServletRequest request, HttpServletResponse response ) {
+        response.setHeader("X-Frame-Options", "SAMEORIGIN");
+        return "resourcelist";
+    }
+
+    @RequestMapping(value = "/blank")
+    public String blank(HttpServletRequest request, HttpServletResponse response ) {
+        response.setHeader("X-Frame-Options", "SAMEORIGIN");
+        return "blank";
+    }
+
+    @RequestMapping(value = "/excuteOrderList")
+    public String excuteOrderList(HttpServletRequest request, HttpServletResponse response ) {
+        response.setHeader("X-Frame-Options", "SAMEORIGIN");
+        return "excuteOrderList";
+    }
+
+
+    @RequestMapping(value = "/test")
+    public String test( ) {
+        return "test";
+    }
 }
