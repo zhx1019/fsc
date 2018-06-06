@@ -1,28 +1,29 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
+<head th:include="masters/BasicScripts::header">
     <title>Menu</title>
-    <link rel="stylesheet" type="text/css" th:href="@{css/juche/main.css}"/>
-    <script type="text/javascript" th:src="@{/scripts/jquery.min.js}"></script>
+    <!--<link rel="stylesheet" type="text/css" th:href="@{css/juche/main.css}"/>-->
+    <!--<script type="text/javascript" th:src="@{/scripts/jquery.min.js}"></script>-->
 </head>
 <body>
 <div class="mod_side">
     <h1 class="logo"><a href="juche.html"></a></h1>
     <div class="mod_list">
         <ul>
-            <li class="on" data-tab="false" data-name="info_CustomerManger_query"><a href="/blank" target="rightFrame" data-seq="1"><i
+            <li class="on" data-tab="false" data-name="info_CustomerManger_query"><a href="/customList" target="rightFrame" data-seq="1"><i
                     class="ico ico_customer"></i>客户</a></li>
-            <li data-tab="true" data-name="info_CarManage_querySelfCar"><a href="/resourcelist" target="rightFrame" data-seq="2"><i
+            <li data-tab="true" data-name="info_CarManage_querySelfCar"><a href="/resourceList" target="rightFrame" data-seq="2"><i
                     class="ico ico_resource"></i>资源</a></li>
-            <li data-tab="true" data-name="order_OrderManage_queryOrder"><a href="/order" target="rightFrame" data-seq="3"><i
+            <li data-tab="true" data-name="order_OrderManage_queryOrder"><a href="/waitingOrderList" target="rightFrame" data-seq="3"><i
                     class="ico ico_order"></i>订单</a></li>
             <li data-tab="true" data-name="system_ UserManage_queryUser"><a href="/setting" target="rightFrame" data-seq="6"><i
                     class="ico ico_set"></i>设置</a></li>
         </ul>
     </div>
 </div>
+
+
 <script>
     $(function(){
       $("li a").click(function(){
