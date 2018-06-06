@@ -16,20 +16,9 @@ import java.security.Principal;
  */
 
 @Controller
-@RequestMapping("/order")
 public class CreateOrderController {
 
   @Autowired
   private UserService userService;
 
-  @RequestMapping(value = "createOrder", method = RequestMethod.GET)
-  public String co(@AuthenticationPrincipal Principal principal, HttpServletRequest request, Model model) {
-    model.addAttribute("cities", userService.getAllUser());
-    return "order/createOrder";
-  }
-
-  @RequestMapping(value = "createOrder", method = RequestMethod.POST)
-  public String createOrder() {
-    return "redirect:order/orders";
-  }
 }

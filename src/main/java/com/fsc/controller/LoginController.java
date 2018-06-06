@@ -30,14 +30,21 @@ public class LoginController {
         return "index";
     }
 
-    @GetMapping("/resource")
-    public String resource() {
+    @GetMapping("/BasicScripts")
+    public String BasicScripts(HttpServletRequest request, HttpServletResponse response) {
+        response.setHeader("X-Frame-Options", "SAMEORIGIN");
+        return "masters/BasicScripts";
+    }
+
+
+    @GetMapping("/resourceList")
+    public String resource(HttpServletRequest request, HttpServletResponse response) {
+        response.setHeader("X-Frame-Options", "SAMEORIGIN");
         return "resource/resourceList";
     }
 
-    @GetMapping("/customlist")
+    @GetMapping("/customList")
     public String customList(HttpServletRequest request, HttpServletResponse response) {
-
         response.setHeader("X-Frame-Options", "SAMEORIGIN");
         return "custom/customList";
     }
@@ -55,27 +62,20 @@ public class LoginController {
         return "menu";
     }
 
-    @RequestMapping(value = "/resourcelist")
-    public String resourcelist(HttpServletRequest request, HttpServletResponse response ) {
-        response.setHeader("X-Frame-Options", "SAMEORIGIN");
-        return "resourcelist";
-    }
 
-    @RequestMapping(value = "/blank")
-    public String blank(HttpServletRequest request, HttpServletResponse response ) {
-        response.setHeader("X-Frame-Options", "SAMEORIGIN");
-        return "blank";
-    }
-
+    /*
+    * 订单管理页面跳转
+    * */
     @RequestMapping(value = "/excuteOrderList")
     public String excuteOrderList(HttpServletRequest request, HttpServletResponse response ) {
         response.setHeader("X-Frame-Options", "SAMEORIGIN");
-        return "excuteOrderList";
+        return "order/excuteOrderList";
     }
 
-
-    @RequestMapping(value = "/test")
-    public String test( ) {
-        return "test";
+    @RequestMapping(value = "/waitingOrderList")
+    public String waitingOrderList(HttpServletRequest request, HttpServletResponse response ) {
+        response.setHeader("X-Frame-Options", "SAMEORIGIN");
+        return "order/waitingOrderList";
     }
+
 }

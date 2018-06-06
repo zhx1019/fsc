@@ -1,104 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head  th:include="masters/BasicScripts::header">
     <meta charset="UTF-8"/>
     <title>客户列表</title>
-
-    <link rel="stylesheet" type="text/css" th:href="@{css/hui/static/h-ui/css/H-ui.min.css}"/>
-    <link rel="stylesheet" type="text/css" th:href="@{css/hui/static/h-ui.admin/css/H-ui.admin.css}"/>
-    <link rel="stylesheet" type="text/css" th:href="@{css/hui/lib/Hui-iconfont/1.0.8/iconfont.css}"/>
-    <link rel="stylesheet" type="text/css" th:href="@{css/hui/static/h-ui.admin/skin/default/skin.css}" id="skin"/>
-    <link rel="stylesheet" type="text/css" th:href="@{css/hui/static/h-ui.admin/css/style.css}"/>
-    <link rel="stylesheet" type="text/css" th:href="@{css/layui/css/layui.css}"/>
-
 </head>
 <body>
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 客户管理 <span
-        class="c-gray en">&gt;</span> 客户列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px"
-                                              href="javascript:location.replace(location.href);" title="刷新"><i
-        class="Hui-iconfont">&#xe68f;</i></a></nav>
-<div class="page-container">
-    <div class="layui-row layui-col-space1">
-        <div class="layui-col-md2">
-            <div class="grid-demo grid-demo-bg1"></div>
+
+    <div class="mod_load" id="mod_load" style="height: 652px;">
+    <div class="mod_hd"> <h2 class="title">客户管理</h2>  </div>
+    <div class="mod_bd">
+        <div class="func_box">
+            <div class="inpt_box"> <input type="text" data-value="输入公司名称/简称/联系人姓名/联系人手机号" value="输入公司名称/简称/联系人姓名/联系人手机号"/> </div>
+            <div class="btn_box"> <button class="btn_green_m" data-name="info_CustomerManger_query"><i class="ico ico_bsearch"></i>搜索</button> </div>
+            <a class="btn_add" data-type="user" data-name="info_CustomerManger_getCustomer" href="javascript:;"><i class="ico ico_badd"></i>添加客户</a>
         </div>
-        <div class="layui-col-md4">
-            <div class="grid-demo"> <input type="text" name="title" lay-verify="title" autocomplete="off"
-                                           placeholder="输入公司名称/简称/联系人姓名/联系人电话号"
-                                           class="layui-input"/></div>
-        </div>
-        <div class="layui-col-md1">
-            <div class="grid-demo"></div>
-        </div>
-        <div class="layui-col-md2">
-            <div class="grid-demo grid-demo-bg1"> <button class="layui-btn layui-btn-fluid">搜 索</button></div>
-        </div>
-        <div class="layui-col-md3">
-            <div class="grid-demo">
-                <button class="layui-btn layui-btn-danger" id="btnOpenDialog">弹框按钮</button>
-            </div>
-        </div>
+        <table class="layui-hide" id="dt"></table>
     </div>
+    </div>
+        <div style="text-align: center;color:#768082;position: fixed;bottom: 0;right:25px;">Power by FSC</div>
+    <script>
+layui.use('table', function(){
+  var table = layui.table;
 
-
-
-    <table class="layui-hide" id="test"></table>
-</div>
-
-<!--_footer 作为公共模版分离出去-->
-<script type="text/javascript" th:src="@{/css/hui/lib/jquery/1.9.1/jquery.min.js}"></script>
-<script type="text/javascript" th:src="@{/css/hui/lib/layer/2.4/layer.js}"></script>
-<script type="text/javascript" th:src="@{/css/hui/static/h-ui/js/H-ui.min.js}"></script>
-<script type="text/javascript" th:src="@{/css/hui/static/h-ui.admin/js/H-ui.admin.js}"></script>
-<script type="text/javascript" th:src="@{/css/layui/layui.js}"/>
-<!--/_footer 作为公共模版分离出去-->
-
-
-<!--请在下方写此页面业务相关的脚本-->
-<script type="text/javascript" th:src="@{/css/hui/lib/My97DatePicker/4.8/WdatePicker.js}"></script>
-<script type="text/javascript" th:src="@{/css/hui/lib/laypage/1.2/laypage.js}"></script>
-
-<script>
-    layui.use('table', function () {
-        var table = layui.table;
-
-        table.render({
-            elem: '#test'
-            , url: '/custom/list'
-            , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
-            , cols: [[
-                {field: 'cusId', width: 80, title: 'ID', sort: true}
-                , {field: 'cusShortname', width: 80, title: '用户名'}
-                , {field: 'cusType', width: 80, title: '性别', sort: true}
-                , {field: 'cusContact', width: 80, title: '城市'}
-                , {field: 'cusCreattime', title: '签名', width: '30%', minWidth: 100} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
-                , {field: 'cusPrice', title: '积分', sort: true}
-                , {field: 'cusSign', title: '评分', sort: true}
-                , {field: 'cusService', title: '职业'}
-                , {field: 'cusCreatman', width: 137, title: '维护人', sort: true}
-            ]]
-            ,page: true
-        });
-    });
+  table.render({
+    elem: '#dt'
+    ,url:'/custom/list'
+    ,cols: [[
+      {field:'cusId', width:80, title: 'ID', sort: true}
+      ,{field:'cusShortname', minWidth:150, title: '客户简称'}
+      ,{field:'cusName', title: '客户名称', sort: true}
+      ,{field:'cusType', width:80, title: '客户级别'}
+      ,{field:'cusContact', title: '联系人', width: 150}
+      ,{field:'cusCreattime', width:80, title: '创建人', sort: true}
+      ,{field:'cusPrice', width:80, title: '价格', sort: true}
+      ,{field:'cusSign', width:80, title: '签约'}
+      ,{field:'cusService', width:135, title: '销售/客服', sort: true}
+      ,{field:'cusCreatman', width:135, title: '创建人', sort: true}
+    ]]
+    ,page: true
+  });
+});
 </script>
-<script>
-    $("#btnOpenDialog").click(function () {
-        layer.open({
-            skin: 'demo-class',
-            area: ['600px','100%'],
-            offset:'r',
-            content:$("#divLayer")
-        });
-
-    });
-
-</script>
-
 </body>
-<div id="divLayer">
 
-    asdfadsf
-    test<br/>
-    sdfsdfadf
-</div>
 </html>
