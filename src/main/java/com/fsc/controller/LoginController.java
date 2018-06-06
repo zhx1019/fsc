@@ -6,8 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import javax.naming.Context;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.security.Principal;
@@ -18,7 +16,6 @@ import java.security.Principal;
 
 @Controller
 public class LoginController {
-
     @RequestMapping(value = {"/", "/login"}, method = RequestMethod.GET)
     public String login(HttpServletRequest request, HttpServletResponse response) {
         return "login";
@@ -64,8 +61,8 @@ public class LoginController {
 
 
     /*
-    * 订单管理页面跳转
-    * */
+     * 订单管理页面跳转
+     * */
     @RequestMapping(value = "/excuteOrderList")
     public String excuteOrderList(HttpServletRequest request, HttpServletResponse response ) {
         response.setHeader("X-Frame-Options", "SAMEORIGIN");
@@ -77,6 +74,4 @@ public class LoginController {
         response.setHeader("X-Frame-Options", "SAMEORIGIN");
         return "order/waitingOrderList";
     }
-
-
 }
